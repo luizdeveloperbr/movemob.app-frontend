@@ -1,0 +1,10 @@
+.avatar_conteiner {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4em;
+    border-bottom: 1px #cfc6c6 solid;
+    background-color: rgb(255, 253, 250);
+}
+.avatar_image {
+    border-radius: 50%;
+}
