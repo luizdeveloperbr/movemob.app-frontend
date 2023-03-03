@@ -8,3 +8,6 @@
 .avatar_image {
     border-radius: 50%;
 }
+.tail {
+    @apply avatar rounded-md ml-auto
+}

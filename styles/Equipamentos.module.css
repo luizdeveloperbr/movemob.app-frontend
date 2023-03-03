@@ -1,3 +1,8 @@
 .main {
-    background: green;
+    background: rgb(190, 190, 190);
+}
+.grid {
+    margin-left: auto;
+    height: 400px;
+    width: 80%;
 }
