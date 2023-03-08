@@ -3,8 +3,10 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <main >
+    <section className="drawer-content">
+      <div>
         <Link href="/equipamentos">EquipamentoPage</Link>
-    </main>
+      </div>
+    </section>
   )
 }

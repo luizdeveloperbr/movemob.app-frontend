@@ -1,5 +1,8 @@
 .main {
     background: rgb(190, 190, 190);
+    padding-top: 0 !important;
+    padding: 6px;
+    boder-radius: 4px
 }
 .grid {
     margin-left: auto;

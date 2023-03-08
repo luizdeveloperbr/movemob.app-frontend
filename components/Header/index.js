@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { tail } from './Header.module.css'
+import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 export default function HeaderComponent() {
     return (
         <header>
@@ -11,10 +11,10 @@ export default function HeaderComponent() {
                 </div>
                 <div className="flex-1 px-2 mx-2">Navbar Title</div>
                 <div className="flex-none">
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown mr-1 dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
                             <div className="indicator">
-                                <p className="px-3 text-2xl rounded-xl bg-slate-400">!</p>
+                                <CircleNotificationsIcon fontSize='large' />
                                 <span className="badge badge-sm indicator-item">8</span>
                             </div>
                         </label>
@@ -27,7 +27,7 @@ export default function HeaderComponent() {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <Image width={48} height={48} src="https://via.placeholder.com/60?text=LE" />
+                                <Image alt="avatar" width={48} height={48} src="https://via.placeholder.com/60?text=LE" />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">

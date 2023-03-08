@@ -1,23 +1,52 @@
-import { AgGridReact } from 'ag-grid-react';
+import { useEffect, useState } from 'react';
+import {getEquipamentos} from '../lib/axios'
+import PostAddIcon from "@mui/icons-material/PostAdd";
 
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-
-import style from '../styles/Equipamentos.module.css'
+import style from "../styles/Equipamentos.module.css";
 export default function EquipamentoPage() {
-    const list = [{ name: 'luiz', position: 'developer', skill: 'javascript' }, { name: 'eduardo', position: 'developer', skill: 'javascript' }, { name: 'souza', position: 'developer', skill: 'typescript' }]
-    return (
-        <section className="drawer-content">
-            <div className={style.main}>
-                <h1 className="p-2 title text-primary"><label htmlFor="side-menu" className="">EquipamentoPage</label></h1>
-                <div className={`${style.grid} ag-theme-alpine`}>
-                    <AgGridReact
-                        rowData={list}
-                        columnDefs={[{ field: 'name' }, { field: 'position' }, { field: 'skill' }]}
-                    >
-                    </AgGridReact>
-                </div>
-            </div>
-        </section>
-    )
+  const [equipamentos, setEquipamentos] = useState([])
+
+  useEffect(()=>{
+    getEquipamentos(setEquipamentos)
+  },[])
+
+  return (
+    <section className="drawer-content">
+      <div className={style.main}>
+        <nav className="flex justify-center gap-2 py-3">
+          <button className="btn btn-sm bg-primary border-white">
+            <PostAddIcon />
+          </button>
+          <button className="btn btn-sm">Add</button>
+          <button className="btn btn-sm">Add</button>
+        </nav>
+        <div className="overflow-x-auto w-full bg-slate-200">
+          <table className="table w-full">
+            <thead>
+              <tr>
+              <th>-</th>
+              <th>Plaqueta</th>
+              <th>Descrição</th>
+              <th>Setor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {equipamentos.map((equipamento,index) => {
+                return (
+                  <tr key={index}>
+                  <td>
+                    <input type='checkbox' className='checkbox' />
+                  </td>
+                  <td>{equipamento?.plaqueta}</td>
+                  <td>{equipamento?.descricao}</td>
+                  <td>{equipamento?.setor}</td>
+                </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
 }
