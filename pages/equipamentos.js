@@ -7,9 +7,11 @@ export default function EquipamentoPage() {
   const [equipamentos, setEquipamentos] = useState([
     {
       plaqueta: 123456,
+      filial: 124,
       descricao: "monitor",
       Setor: { descricao: "frente de loja" },
       status: "sent",
+      codigo: 4321
     },
   ]);
   const [itemsSelecinados, addItem] = useState([]);
@@ -94,21 +96,58 @@ export default function EquipamentoPage() {
                                   Detalhes do Equipamento
                                 </h2>
                                 <form action="" className="contents">
-                                  <input
-                                    type="text"
-                                    value={equipamento.plaqueta}
-                                    className="input my-[2px] input-bordered input-sm w-full max-w-xs"
-                                  />
-                                  <input
-                                    type="text"
-                                    placeholder="Type here"
-                                    className="input my-[2px] input-bordered input-sm w-full max-w-xs"
-                                  />
+                                <div className="form-control">
+                                    <label className="input-group input-group-vertical">
+                                      <span>Filial</span>
+                                      <input
+                                        readOnly
+                                        type="text"
+                                        value={equipamento.filial}
+                                        className="input input-sm input-bordered"
+                                      />
+                                    </label>
+                                  </div>
+                                <div className="form-control">
+                                    <label className="input-group input-group-vertical">
+                                      <span>Setor</span>
+                                      <input
+                                        readOnly
+                                        type="text"
+                                        value={equipamento.Setor.descricao}
+                                        className="input input-sm input-bordered"
+                                      />
+                                    </label>
+                                  </div>
+                                  <div className="divider my-0"></div>
                                   <div className="form-control">
                                     <label className="input-group input-group-vertical">
-                                      <span>Email</span>
+                                      <span>Plaqueta</span>
                                       <input
+                                        readOnly
                                         type="text"
+                                        value={equipamento.plaqueta}
+                                        className="input input-sm input-bordered"
+                                      />
+                                    </label>
+                                  </div>
+                                  <div className="form-control">
+                                    <label className="input-group input-group-vertical">
+                                      <span>Descrição</span>
+                                      <input
+                                        readOnly
+                                        type="text"
+                                        value={equipamento.descricao}
+                                        className="input input-sm input-bordered"
+                                      />
+                                    </label>
+                                  </div>
+                                  <div className="form-control">
+                                    <label className="input-group input-group-vertical">
+                                      <span>Codigo</span>
+                                      <input
+                                        readOnly
+                                        type="text"
+                                        value={equipamento.codigo}
                                         placeholder="info@site.com"
                                         className="input input-sm input-bordered"
                                       />
