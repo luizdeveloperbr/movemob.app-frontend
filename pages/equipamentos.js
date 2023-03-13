@@ -1,24 +1,22 @@
-import { useEffect, useState } from "react";
-import { getEquipamentos } from "../lib/axios";
+import { useState } from "react";
+import { axiosInstance } from "../lib/axios";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
+import { Modal } from "../components/Modal";
 import style from "../styles/Equipamentos.module.css";
-export default function EquipamentoPage() {
-  const [equipamentos, setEquipamentos] = useState([
-    {
-      plaqueta: 123456,
-      filial: 124,
-      descricao: "monitor",
-      Setor: { descricao: "frente de loja" },
-      status: "sent",
-      codigo: 4321
-    },
-  ]);
-  const [itemsSelecinados, addItem] = useState([]);
 
-  useEffect(() => {
-    getEquipamentos(setEquipamentos);
-  }, []);
+export async function getStaticProps() {
+  const { data } = await axiosInstance.request({ url: '/equipamentos', method: 'GET' })
+  return {
+    props: {
+      equipamentos: data
+    }
+  }
+}
+
+export default function EquipamentoPage({ equipamentos }) {
+
+  const [itemsSelecinados, addItem] = useState([]);
 
   return (
     <section className="drawer-content">
@@ -50,8 +48,8 @@ export default function EquipamentoPage() {
                       key={index}
                       className={
                         itemsSelecinados.includes(equipamento.plaqueta)
-                          ? ""
-                          : "active"
+                          ? "active"
+                          : ""
                       }
                     >
                       <td>
@@ -71,109 +69,12 @@ export default function EquipamentoPage() {
                       <td>{equipamento.status}</td>
                       <td>
                         <label
-                          htmlFor="my-modal-4"
+                          htmlFor={equipamento.plaqueta}
                           className="btn btn-sm bg-primary border-white"
                         >
                           <PostAddIcon />
                         </label>
-                      </td>
-                    </tr>
-                    <tr className="max-h-[1px]">
-                      <td colSpan="6">
-                        <input
-                          type="checkbox"
-                          id="my-modal-4"
-                          className="modal-toggle"
-                        />
-                        <label
-                          htmlFor="my-modal-4"
-                          className="modal cursor-pointer"
-                        >
-                          <label className="modal-box p-0 relative" htmlFor="">
-                            <div className="card bg-base-100 shadow-xl">
-                              <div className="card-body">
-                                <h2 className="card-title">
-                                  Detalhes do Equipamento
-                                </h2>
-                                <form action="" className="contents">
-                                <div className="form-control">
-                                    <label className="input-group input-group-vertical">
-                                      <span>Filial</span>
-                                      <input
-                                        readOnly
-                                        type="text"
-                                        value={equipamento.filial}
-                                        className="input input-sm input-bordered"
-                                      />
-                                    </label>
-                                  </div>
-                                <div className="form-control">
-                                    <label className="input-group input-group-vertical">
-                                      <span>Setor</span>
-                                      <input
-                                        readOnly
-                                        type="text"
-                                        value={equipamento.Setor.descricao}
-                                        className="input input-sm input-bordered"
-                                      />
-                                    </label>
-                                  </div>
-                                  <div className="divider my-0"></div>
-                                  <div className="form-control">
-                                    <label className="input-group input-group-vertical">
-                                      <span>Plaqueta</span>
-                                      <input
-                                        readOnly
-                                        type="text"
-                                        value={equipamento.plaqueta}
-                                        className="input input-sm input-bordered"
-                                      />
-                                    </label>
-                                  </div>
-                                  <div className="form-control">
-                                    <label className="input-group input-group-vertical">
-                                      <span>Descrição</span>
-                                      <input
-                                        readOnly
-                                        type="text"
-                                        value={equipamento.descricao}
-                                        className="input input-sm input-bordered"
-                                      />
-                                    </label>
-                                  </div>
-                                  <div className="form-control">
-                                    <label className="input-group input-group-vertical">
-                                      <span>Codigo</span>
-                                      <input
-                                        readOnly
-                                        type="text"
-                                        value={equipamento.codigo}
-                                        placeholder="info@site.com"
-                                        className="input input-sm input-bordered"
-                                      />
-                                    </label>
-                                  </div>
-                                </form>
-                                <div className="card-actions justify-center">
-                                  <div className="btn-group gap-1">
-                                    <button className="btn btn-sm btn-primary">
-                                      Emprestimo
-                                    </button>
-                                    <button className="btn btn-sm btn-primary">
-                                      Manutenção
-                                    </button>
-                                    <button className="btn btn-sm btn-primary">
-                                      Transferência
-                                    </button>
-                                    <button className="btn btn-sm btn-primary">
-                                      Baixa
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </label>
-                        </label>
+                        <Modal {...equipamento}></Modal>
                       </td>
                     </tr>
                   </>
