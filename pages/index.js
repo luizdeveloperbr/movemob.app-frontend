@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <section className="drawer-content">
       <div>
-        <Link href="/equipamentos">EquipamentoPage</Link>
+          <p className="text-3xl">Home</p>
       </div>
     </section>
   )

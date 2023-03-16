@@ -1,0 +1,11 @@
+.main {
+    background: rgb(190, 190, 190);
+    padding-top: 0 !important;
+    padding: 6px;
+    border-radius: 4px
+}
+.grid {
+    margin-left: auto;
+    height: 80vh;
+    width: 100%;
+}

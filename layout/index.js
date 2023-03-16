@@ -13,10 +13,10 @@ export default function RootLayout({ children, font }) {
           <nav className="menu p-4 w-80 bg-base-100">
             <ul>
               <li>
-                <Link href="/">Home</Link>
+                <Link href="/equipamento">Equipamentos</Link>
               </li>
               <li>
-                <Link href="/equipamentos">Equipamentos</Link>
+                <Link href="/movimentacao">Movimentações</Link>
               </li>
             </ul>
           </nav>
