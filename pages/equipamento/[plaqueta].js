@@ -1,18 +1,30 @@
-import PostAddIcon from '@mui/icons-material/PostAdd'
-import style from '../../styles/Equipamento.module.css'
-export default function EquipamentoPagePorId() {
+import { axiosInstance } from "../../lib/axios";
+import { useRouter } from "next/router";
+
+export async function getServerSideProps({params: {plaqueta}}){
+  const {data} = await axiosInstance.request({url: `/equipamentos/${plaqueta}`, method: 'GET'})
+  return{
+    props: {
+      equipamento: data
+    }
+  }
+}
+export default function EquipamentoPagePorId({equipamento}){
+  const router = useRouter()
     return (
-        <section className="drawer-content">
-            <div className={style.main}>
-                <nav className="flex justify-center gap-2 py-3">
-                    <button className="btn btn-sm bg-primary border-white">
-                        <PostAddIcon />
-                    </button>
-                    <button className="btn btn-sm">Add</button>
-                    <button className="btn btn-sm">Add</button>
-                </nav>
-                ID
-            </div>
-        </section>
-    )
+    <section className="drawer-content">
+          <div className="text-sm breadcrumbs">
+            <ul>
+              <li>
+                <a onClick={() => router.push({pathname: '/'})}>Home</a>
+              </li>
+              <li>
+                <a onClick={() => router.back()}>Equipamentos</a>
+              </li>
+              <li>{equipamento.plaqueta}</li>
+            </ul>
+          </div>
+          <h2>{equipamento.descricao}</h2>
+    </section>
+  );
 }

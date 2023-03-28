@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { axiosInstance } from "../../lib/axios";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-
-// import { Modal } from "../../components/Modal";
-import style from "../../styles/Equipamento.module.css";
 import Link from "next/link";
 
 export async function getServerSideProps() {
@@ -15,15 +12,15 @@ export async function getServerSideProps() {
   }
 }
 
+
 export default function EquipamentoPage({ equipamentos }) {
 
   const [itemsSelecinados, addItem] = useState([]);
 
   return (
     <section className="drawer-content">
-      <div className={style.main}>
         <div className="overflow-x-auto w-full bg-slate-200">
-          <table className="table w-full">
+          <table className="table w-full border">
             <thead>
               <tr>
                 <th>Plaqueta</th>
@@ -43,16 +40,7 @@ export default function EquipamentoPage({ equipamentos }) {
                     <td>{equipamento.plaqueta}</td>
                     <td>{equipamento.descricao}</td>
                     <td>{equipamento.filial}</td>
-                    <td>{equipamento.Setor.descricao}</td>
-                    {/* <td>
-                        <label
-                          htmlFor={equipamento.plaqueta}
-                          className="btn btn-sm bg-primary border-white"
-                        >
-                          <PostAddIcon />
-                        </label>
-                        <Modal {...equipamento}></Modal>
-                      </td> */}
+                    <td></td>
                     <td><Link
                       className="btn btn-sm bg-primary border-white"
                       href={`/equipamento/${equipamento.plaqueta}`}>
@@ -65,7 +53,6 @@ export default function EquipamentoPage({ equipamentos }) {
             </tbody>
           </table>
         </div>
-      </div>
     </section>
   );
 }

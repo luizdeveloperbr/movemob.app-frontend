@@ -16,3 +16,6 @@ a {
 html {
   font-family: 'Roboto', serif;
 }
+section {
+  padding: 1rem
+}
