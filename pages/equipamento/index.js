@@ -19,8 +19,8 @@ export default function EquipamentoPage({ equipamentos }) {
 
   return (
     <section className="drawer-content">
-        <div className="overflow-x-auto w-full bg-slate-200">
-          <table className="table w-full border">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
             <thead>
               <tr>
                 <th>Plaqueta</th>
@@ -30,7 +30,7 @@ export default function EquipamentoPage({ equipamentos }) {
                 <th>Detalhes</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="border border-base-200">
               {equipamentos.map((equipamento, index) => {
                 return (
                   <tr

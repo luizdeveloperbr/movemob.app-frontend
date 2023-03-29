@@ -4,7 +4,7 @@ const nextConfig = {
   output: "standalone",
   images:{
     remotePatterns: [{
-      hostname: 'via.placeholder.com'
+      hostname: 'api.lorem.space'
     }],
     unoptimized: true
   }

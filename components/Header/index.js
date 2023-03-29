@@ -6,7 +6,7 @@ import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 export default function HeaderComponent() {
     return (
         <header>
-            <div className="navbar p-0 bg-orange-600">
+            <div className="navbar bg-primary">
                 <div className="flex-none lg:hidden">
                     <label htmlFor="side-menu" className="btn btn-square btn-ghost">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -34,7 +34,7 @@ export default function HeaderComponent() {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <Image alt="avatar" width={48} height={48} src="https://via.placeholder.com/60?text=LE" />
+                                <Image alt="avatar" width={48} height={48} src="https://api.lorem.space/image/face?w=50&h=50" />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
