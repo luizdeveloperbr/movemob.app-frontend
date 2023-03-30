@@ -18,8 +18,7 @@ export default function EquipamentoPage({ equipamentos }) {
   const [itemsSelecinados, addItem] = useState([]);
 
   return (
-    <section className="drawer-content">
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto mt-4 w-full">
           <table className="table w-full">
             <thead>
               <tr>
@@ -53,6 +52,5 @@ export default function EquipamentoPage({ equipamentos }) {
             </tbody>
           </table>
         </div>
-    </section>
   );
 }

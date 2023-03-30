@@ -6,7 +6,7 @@ export default function BreadCrumps() {
   return (
     <>
       {router.asPath !== "/" ? (
-        <div className="text-sm breadcrumbs">
+        <div className="text-sm breadcrumbs bg-base-200 pl-1 rounded">
           <ul>
             {listRouters.map((link, index) => (
               <li key={index}>

@@ -1,5 +1,4 @@
 import { axiosInstance } from "../../lib/axios";
-import { useRouter } from "next/router";
 import Image from "next/image";
 
 export async function getServerSideProps({params: {plaqueta}}){
@@ -11,26 +10,11 @@ export async function getServerSideProps({params: {plaqueta}}){
   }
 }
 export default function EquipamentoPagePorId({equipamento}){
-  const router = useRouter()
     return (
-    <section className="drawer-content">
-      <header>
-          <div className="text-sm breadcrumbs bg-base-200 rounded-md pl-2 mb-4">
-            <ul>
-              <li>
-                <a onClick={() => router.push({pathname: '/'})}>Home</a>
-              </li>
-              <li>
-                <a onClick={() => router.back()}>Equipamentos</a>
-              </li>
-              <li>{equipamento.plaqueta}</li>
-            </ul>
-          </div>
-      </header>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row mt-4 justify-between">
         <div className="bg-base-200 rounded-md w-full">
           <figure className="text-center">
-            <Image className="mx-auto my-10" src="https://api.lorem.space/image/furniture?w=250&h=250" alt="foto do bem patrimonial" width={250} height={250} />
+            <Image className="mx-auto" src="https://api.lorem.space/image/furniture?w=250&h=250" alt="foto do bem patrimonial" width={250} height={250} />
             <figcaption>Nº Serie</figcaption>
           </figure>
         </div>
@@ -60,6 +44,5 @@ export default function EquipamentoPagePorId({equipamento}){
           </form>
         </div>
       </div>
-    </section>
   );
 }
