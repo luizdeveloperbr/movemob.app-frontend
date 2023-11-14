@@ -15,13 +15,5 @@ module.exports = {
       }
     },
   },
-  plugins: [require('daisyui')],
-  daisyui: {
-    themes: [{
-      light: {
-        ...require("daisyui/src/colors/themes")["[data-theme=light]"],
-        primary: '#CC5803'
-    }
-  }]
-  }
+  plugins: [require('daisyui')]
 }
