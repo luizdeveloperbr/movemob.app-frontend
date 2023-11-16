@@ -16,6 +16,6 @@ a {
 html {
   font-family: 'Roboto', serif;
 }
-section.drawer-content {
+div.drawer-content {
   padding: 1rem
 }
