@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import BreadCrumps from "../components/BreadCrumbs";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import BreadCrumps from "../components/layout/BreadCrumbs";
 import Link from "next/link";
 export default function RootLayout({ children, font }) {
     return (
