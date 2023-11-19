@@ -7,9 +7,9 @@ export default function EquipamentoDetalhes({ data }) {
             <div className="grid grid-cols-3 grid-rows-2 text-center items-end">
                 <div className="border border-zinc-300 py-1 my-2">{data.filial.descricao} - {data.filial_id}</div>
                 <div className="border border-zinc-300 py-1 my-2 bg-white col-span-2">{data.setor.descricao}</div>
-                <p>Status: #{data.movimentacao_id} ({data.movimentacao.status})</p>
-                <p>Codigo: {data.codigo}</p>
-                <p>Valor: {data.valor}</p>
+                <p className="border border-zinc-300 py-2">Status: #{data.movimentacao_id} ({data.movimentacao.status})</p>
+                <p className="border border-zinc-300 py-2">Codigo: {data.codigo}</p>
+                <p className="border border-zinc-300 py-2">Valor: {data.valor}</p>
             </div>
         </fieldset>
     )
