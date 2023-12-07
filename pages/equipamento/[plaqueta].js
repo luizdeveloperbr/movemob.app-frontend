@@ -1,16 +1,25 @@
+import { useState, Suspense } from "react";
 import { axiosInstance } from "../../lib/axios";
 import Image from "next/image";
-import {EquipamentoDetalhes, EquipamentoMovimentar} from "../../components/EquipamentoPage"
+
+import {EquipamentoDetalhes,BotoesMovimentacao,DestinoMovimentacao,ComplementoMovimentacao} from '../../components/EquipamentoPage'
 
 export async function getServerSideProps({ params: { plaqueta } }) {
-  const { data } = await axiosInstance.request({ url: `/equipamento/${plaqueta}`, method: 'GET' })
+
+  const dataEquipamento = await axiosInstance.request({ url: `/equipamento/${plaqueta}`, method: 'GET' });
+  const dataFilial = await axiosInstance.request({ url: '/filial', method: 'GET' });
+
   return {
     props: {
-      equipamento: data
+      equipamento: dataEquipamento.data,
+      filial: dataFilial.data
     }
   }
 }
-export default function EquipamentoPagePorId({ equipamento }) {
+export default function EquipamentoPagePorId({ equipamento, filial }) {
+  const tipos = ['emprestimo', 'manutencao', 'transferencia', 'baixa']
+  const [movimentacaoSelecionada, selecionarMovimentacao] = useState('manutencao')
+
   return (
     <div className="flex flex-row mt-4 justify-between">
       <div className="bg-base-200 rounded-md w-full p-3">
@@ -23,10 +32,13 @@ export default function EquipamentoPagePorId({ equipamento }) {
       <div className="bg-base-200 rounded-md w-full p-3">
         <form action="" method="get">
           <EquipamentoDetalhes data={equipamento} />
-          <EquipamentoMovimentar actions={['emprestimo','manutencao', 'transferencia', 'baixa']}/>
+          <BotoesMovimentacao movimentacaoPermitida={tipos} selecionarMovimentacao={selecionarMovimentacao} />
+          <DestinoMovimentacao lista={filial} />
+          <Suspense>
+            <ComplementoMovimentacao tipo={movimentacaoSelecionada} />
+          </Suspense>
           <button type="submit" className="btn text-white float-right btn-sm bg-success ml-1">Confirmar</button>
           <button className="btn text-white float-right btn-sm bg-error">Cancelar</button>
-
         </form>
       </div>
     </div>

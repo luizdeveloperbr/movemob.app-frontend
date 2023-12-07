@@ -14,7 +14,8 @@ export default function RootLayout({ children, font }) {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="side-menu" className="drawer-overlay"></label>
-                    <ul className='menu p-4 w-80 min-h-full bg-base-100'>
+                    <ul className='menu p-0 w-80 min-h-full bg-base-100'>
+                        <div className="navbar mb-1 lg:hidden bg-primary"></div>
                         <li>
                             <Link href="/equipamento">Equipamentos</Link>
                         </li>
