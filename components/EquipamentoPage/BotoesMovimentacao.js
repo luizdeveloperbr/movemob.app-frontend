@@ -1,4 +1,4 @@
-const BotoesMovimentacao = ({ movimentacaoPermitida, selecionarMovimentacao }) => {
+const BotoesMovimentacao = ({ movimentacaoPermitida, functionSetMovimentacao }) => {
     return (
         <fieldset className=" border-zinc-300 border-2 rounded p-2">
             <legend>Movimentar</legend>
@@ -6,8 +6,8 @@ const BotoesMovimentacao = ({ movimentacaoPermitida, selecionarMovimentacao }) =
                 {movimentacaoPermitida.map((buttonMovimentacao, index) => {
                     return <input
                         key={index}
-                        className="join-item btn btn-md bg-primary text-white"
-                        onChange={(e) => selecionarMovimentacao(e.target.value)}
+                        className="join-item btn btn-md bg-zinc-300 capitalize"
+                        onChange={(e) => functionSetMovimentacao(e.target.value)}
                         type="radio"
                         name="movimentacao"
                         aria-label={buttonMovimentacao}

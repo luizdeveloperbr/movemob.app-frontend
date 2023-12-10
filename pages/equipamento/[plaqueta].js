@@ -1,8 +1,7 @@
 import { useState, Suspense } from "react";
 import { axiosInstance } from "../../lib/axios";
-import Image from "next/image";
 
-import {EquipamentoDetalhes,BotoesMovimentacao,DestinoMovimentacao,ComplementoMovimentacao} from '../../components/EquipamentoPage'
+import { EquipamentoImagens, EquipamentoDetalhes, BotoesMovimentacao, DestinoMovimentacao, ComplementoMovimentacao } from '../../components/EquipamentoPage'
 
 export async function getServerSideProps({ params: { plaqueta } }) {
 
@@ -17,22 +16,21 @@ export async function getServerSideProps({ params: { plaqueta } }) {
   }
 }
 export default function EquipamentoPagePorId({ equipamento, filial }) {
-  const tipos = ['emprestimo', 'manutencao', 'transferencia', 'baixa']
+  const tipos = ['emprestimo', 'manutencao', 'transferência', 'baixa']
   const [movimentacaoSelecionada, selecionarMovimentacao] = useState('manutencao')
 
   return (
     <div className="flex flex-row mt-4 justify-between">
-      <div className="bg-base-200 rounded-md w-full p-3">
-        <figure className="text-center">
-          <Image className="mx-auto" src="https://api.lorem.space/image/fashion?w=250&h=250" alt="foto do bem patrimonial" width={250} height={250} />
-          <figcaption>Nº Serie</figcaption>
-        </figure>
+      <div className="bg-base-200 rounded-md w-full p-3 flex flex-col justify-evenly">
+        <EquipamentoImagens data={equipamento} />
       </div>
-      <div className="divider-horizontal divider"></div>
-      <div className="bg-base-200 rounded-md w-full p-3">
+      <div className="divider-horizontal divider">
+        {/* Linha Vertical */}
+      </div>
+      <div className="bg-base-200 rounded-md w-full p-3 flex flex-col justify-evenly">
         <form action="" method="get">
           <EquipamentoDetalhes data={equipamento} />
-          <BotoesMovimentacao movimentacaoPermitida={tipos} selecionarMovimentacao={selecionarMovimentacao} />
+          <BotoesMovimentacao movimentacaoPermitida={tipos} functionSetMovimentacao={selecionarMovimentacao} />
           <DestinoMovimentacao lista={filial} />
           <Suspense>
             <ComplementoMovimentacao tipo={movimentacaoSelecionada} />
