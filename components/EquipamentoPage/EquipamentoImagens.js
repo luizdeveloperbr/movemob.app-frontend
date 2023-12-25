@@ -18,7 +18,7 @@ export default function EquipamentoImagens({ data }) {
 const Thumb = ({ images, functionSetImage }) => {
   return (
     <div className="flex flex-row justify-center gap-1">
-      {images.map((element, index) => <a onClick={() => functionSetImage(element)}><img src={element} key={index} alt="" /></a>)}
+      {images.map((element, index) => <a onClick={() => functionSetImage(element)} key={index} ><Image src={element} height={100} width={100} alt="" /></a>)}
     </div>
   )
 }
