@@ -5,15 +5,16 @@ import { EquipamentoImagens, EquipamentoDetalhes, BotoesMovimentacao, DestinoMov
 
 export async function getServerSideProps({ params: { plaqueta } }) {
 
-  const dataEquipamento = await axiosInstance.request({ url: `/equipamento/${plaqueta}`, method: 'GET' });
-  const dataFilial = await axiosInstance.request({ url: '/filial', method: 'GET' });
+  const equipamento = await axiosInstance.request({ url: `/equipamento/${plaqueta}`, method: 'GET' });
+  const filial = await axiosInstance.request({ url: '/filial', method: 'GET' });
 
   return {
-    props: {
-      equipamento: dataEquipamento.data,
-      filial: dataFilial.data
+      props: {
+        equipamento: equipamento.data,
+        filial: filial.data
+      }
     }
-  }
+
 }
 export default function EquipamentoPagePorId({ equipamento, filial }) {
   const tipos = ['emprestimo', 'manutencao', 'transferência', 'baixa']
